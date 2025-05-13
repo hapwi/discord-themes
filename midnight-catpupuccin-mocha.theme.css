@@ -1,5 +1,5 @@
 /**
- * @name midnight (catppuccin mocha) - Improved
+ * @name Custom Midnight Discord
  * @description a dark, customizable discord theme. based on catppuccin mocha theme (https://catppuccin.com).
  * @author pete
  * @version 1.0.0
@@ -11,6 +11,69 @@
 
 /* import theme modules */
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+/* ──── HIDE “DISCOVER” BUTTON ──── */
+.circleIconButton__5bc7e
+  [data-list-item-id="guildsnav___guild-discover-button"] {
+  display: none !important;
+}
+/* also collapse its list-item container */
+.listItem__650eb:has(
+  .circleIconButton__5bc7e[data-list-item-id="guildsnav___guild-discover-button"]
+) {
+  display: none !important;
+}
+
+/* ──── HIDE “DOWNLOAD APPS” BUTTON ──── */
+/* target the icon itself */
+.circleIconButton__5bc7e
+  [data-list-item-id="guildsnav___app-download-button"] {
+  display: none !important;
+}
+/* collapse the entire list-item wrapper */
+.listItem__650eb:has(
+  .circleIconButton__5bc7e[data-list-item-id="guildsnav___app-download-button"]
+) {
+  display: none !important;
+}
+
+/* ─── HIDE “Activity — X” GROUP IN THE RIGHT-HAND MEMBERS PANEL ─── */
+/* 1) Hide the "Activity — N" header (the first H3 in the Members list) */
+.content__99f8c > h3.membersGroup_c8ffbb:first-of-type {
+  display: none !important;
+}
+
+/* ─── Hide the nitro button in the chat area along with the unneeded gif and stickers button that take up space for no reason. Stickers and gifs can be accessed with the normal emoji picker. ─── */
+.contents__201d5.button__24af7.button__74017 {
+  display: none !important;
+}
+
+/* ──── HIDE THE “Apps” LAUNCHER BUTTON in the chat area ──── */
+/* hide the container that holds the Apps button */
+.buttonContainer_e6e74f.app-launcher-entrypoint {
+  display: none !important;
+}
+/* in case the button itself floats outside, also hide it directly */
+.button_e6e74f.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Apps"] {
+  display: none !important;
+}
+
+/* push the emoji button back over toward the right edge */
+.expression-picker-chat-input-button {
+  position: absolute !important;
+  top: 50% !important;
+  right: -1px !important;
+  transform: translateY(-50%) !important;
+}
+
+
+/* 3) If you want the entire server member list gone: */
+/*
+.container_c8ffbb {
+  display: none !important;
+}
+*/
+
 
 body {
     /* font, change to '' for default discord font */
