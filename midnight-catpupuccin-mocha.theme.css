@@ -66,6 +66,18 @@
   transform: translateY(-50%) !important;
 }
 
+/* ──── HIDE “Start An Activity” BUTTON ──── */
+/* by aria-label */
+button[aria-label="Start An Activity"] {
+  display: none !important;
+}
+
+/* or, more specifically by its class + label */
+.button_e131a9.buttonColor_e131a9[aria-label="Start An Activity"] {
+  display: none !important;
+}
+
+
 
 /* 3) If you want the entire server member list gone: */
 /*
