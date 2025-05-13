@@ -1,0 +1,285 @@
+/**
+ * @name Custom Midnight Discord
+ * @description a dark, customizable discord theme. based on catppuccin mocha theme (https://catppuccin.com).
+ * @author pete
+ * @version 1.0.0
+ * @website 
+ * @source 
+ * @authorId 
+ * @authorLink 
+*/
+
+/* import theme modules */
+@import url("https://refact0r.github.io/midnight-discord/build/midnight.css");
+
+/* ──── HIDE “DISCOVER” BUTTON ──── */
+.circleIconButton__5bc7e
+  [data-list-item-id="guildsnav___guild-discover-button"] {
+  display: none !important;
+}
+
+/* also collapse its list-item container */
+.listItem__650eb:has(
+    .circleIconButton__5bc7e[data-list-item-id="guildsnav___guild-discover-button"]
+  ) {
+  display: none !important;
+}
+
+/* ──── HIDE “DOWNLOAD APPS” BUTTON ──── */
+/* target the icon itself */
+.circleIconButton__5bc7e [data-list-item-id="guildsnav___app-download-button"] {
+  display: none !important;
+}
+/* collapse the entire list-item wrapper */
+.listItem__650eb:has(
+    .circleIconButton__5bc7e[data-list-item-id="guildsnav___app-download-button"]
+  ) {
+  display: none !important;
+}
+
+/* ─── HIDE “Activity — X” GROUP IN THE RIGHT-HAND MEMBERS PANEL ─── */
+/* 1) Hide the "Activity — N" header (the first H3 in the Members list) */
+.content__99f8c > h3.membersGroup_c8ffbb:first-of-type {
+  display: none !important;
+}
+
+/* ─── Hide the nitro button in the chat area along with the unneeded gif and stickers button that take up space for no reason. Stickers and gifs can be accessed with the normal emoji picker. ─── */
+.contents__201d5.button__24af7.button__74017 {
+  display: none !important;
+}
+
+/* ──── HIDE THE “Apps” LAUNCHER BUTTON in the chat area ──── */
+/* hide the container that holds the Apps button */
+.buttonContainer_e6e74f.app-launcher-entrypoint {
+  display: none !important;
+}
+/* in case the button itself floats outside, also hide it directly */
+.button_e6e74f.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Apps"] {
+  display: none !important;
+}
+
+/* push the emoji button back over toward the right edge */
+.expression-picker-chat-input-button {
+  position: absolute !important;
+  top: 50% !important;
+  right: 50px !important;
+  transform: translateY(-50%) !important;
+}
+
+/* ──── HIDE “Start An Activity” BUTTON ──── */
+/* by aria-label */
+button[aria-label="Start An Activity"] {
+  display: none !important;
+}
+
+/* or, more specifically by its class + label */
+.button_e131a9.buttonColor_e131a9[aria-label="Start An Activity"] {
+  display: none !important;
+}
+
+/* 3) If you want the entire server member list gone: */
+/*
+.container_c8ffbb {
+  display: none !important;
+}
+*/
+
+body {
+  /* font, change to '' for default discord font */
+  --font: "figtree"; /* change to '' for default discord font */
+  --code-font: ""; /* change to '' for default discord font */
+  font-weight: 400 /* normal text font weight. DOES NOT AFFECT BOLD TEXT */;
+
+  /* sizes */
+  --gap: 12px; /* spacing between panels */
+  --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+  --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+
+  /* animation/transition options */
+  --animations: off; /* off: disable animations/transitions, on: enable animations/transitions */
+  --list-item-transition: 0.2s ease; /* transition for list items */
+  --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+  --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+
+  /* top bar options */
+  --top-bar-height: var(
+    --gap
+  ); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
+  --top-bar-button-position: hide; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
+  --top-bar-title-position: hide; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+  --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+  /* window controls */
+  --custom-window-controls: on; /* off: default window controls, on: custom window controls */
+  --window-control-size: 14px; /* size of custom window controls */
+
+  /* ─── HIDE THE NATIVE WINDOW CONTROLS ─── */
+  .winButtons_c38106,
+  .winButton_c38106 {
+    display: none !important;
+  }
+
+  /* since we just removed the buttons, you may also want to collapse
+   the extra padding Discord is reserving for them: */
+  .toolbar__9293f,
+  .searchBar__1ac1c {
+    padding-right: 0 !important;
+  }
+
+  /* dms button options */
+  --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+  --dms-icon-svg-url: url("https://206i45y6nz.ufs.sh/f/UdptHOd6tL4vTJJfsBH4JPmDe2giYxtlKSbX0NacVkds8AOL"); /* icon svg url. MUST BE A SVG. */
+  --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
+  --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+  --dms-icon-color-after: var(
+    --white
+  ); /* icon color when button is hovered/selected */
+  --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+  --dms-background-image-url: url(""); /* url of the background image */
+  --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+  --dms-background-color: linear-gradient(
+    70deg,
+    var(--blue-2),
+    var(--purple-2),
+    var(--red-2)
+  ); /* fixed color/gradient (css background property) */
+
+  /* background image options */
+  --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+  --background-image-url: url(""); /* url of the background image */
+
+  /* transparency/blur options */
+  /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+  --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+  --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+  --panel-blur: off; /* off: no changes, on: blur the background of panels */
+  --blur-amount: 12px; /* amount of blur */
+  --bg-floating: var(
+    --bg-3
+  ); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+  /* chatbar options */
+  --custom-chatbar: aligned; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
+  --chatbar-height: 47px; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
+  --chatbar-padding: 8px; /* padding of the chatbar. only applies in aligned mode. */
+
+  /* other options */
+  --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+}
+
+/* color options */
+:root {
+  --colors: on; /* off: discord default colors, on: midnight custom colors */
+
+  /* text colors */
+  --text-0: var(--bg-3); /* text on colored elements */
+  --text-1: hsl(226, 65%, 97%); /* other normally white text */
+  --text-2: #e0e4fd; /* headings and important text */
+  --text-3: #cdd3f5; /* normal text */
+  --text-4: #939ab7; /* icon buttons and channels */
+  --text-5: #696d85; /* muted channels/chats and timestamps */
+
+  /* background and dark colors */
+  --bg-1: #4a4f69; /* dark buttons when clicked */
+  --bg-2: #363a4f; /* dark buttons */
+  --bg-3: #1e2030; /* spacing, secondary elements */
+  --bg-4: #24273a; /* main background color */
+  --hover: hsla(235, 25%, 60%, 0.12); /* channels and buttons when hovered */
+  --active: hsla(
+    235,
+    25%,
+    60%,
+    0.22
+  ); /* channels and buttons when clicked or selected */
+  --active-2: hsla(
+    235,
+    25%,
+    60%,
+    0.32
+  ); /* extra state for transparent buttons */
+  --message-hover: hsla(235, 25%, 15%, 0.1); /* messages when hovered */
+
+  /* accent colors */
+  --accent-1: var(--blue-1); /* links and other accent text */
+  --accent-2: var(--blue-2); /* small accent elements */
+  --accent-3: var(--blue-3); /* accent buttons */
+  --accent-4: var(--blue-4); /* accent buttons when hovered */
+  --accent-5: var(--blue-5); /* accent buttons when clicked */
+  --accent-new: var(
+    --accent-2
+  ); /* stuff that's normally red like mute/deafen buttons */
+  --mention: linear-gradient(
+    to right,
+    color-mix(in hsl, var(--accent-2), transparent 90%) 40%,
+    transparent
+  ); /* background of messages that mention you */
+  --mention-hover: linear-gradient(
+    to right,
+    color-mix(in hsl, var(--accent-2), transparent 95%) 40%,
+    transparent
+  ); /* background of messages that mention you when hovered */
+  --reply: linear-gradient(
+    to right,
+    color-mix(in hsl, var(--text-3), transparent 90%) 40%,
+    transparent
+  ); /* background of messages that reply to you */
+  --reply-hover: linear-gradient(
+    to right,
+    color-mix(in hsl, var(--text-3), transparent 95%) 40%,
+    transparent
+  ); /* background of messages that reply to you when hovered */
+
+  /* status indicator colors */
+  --online: var(--green-2); /* change to #43a25a for default */
+  --dnd: var(--red-2); /* change to #d83a42 for default */
+  --idle: var(--yellow-2); /* change to #ca9654 for default */
+  --streaming: var(--blue-2); /* change to #593695 for default */
+  --offline: var(--text-4); /* change to #83838b for default offline color */
+
+  /* border colors */
+  --border-light: hsla(235, 25%, 65%, 0.12); /* general light border color */
+  --border: hsla(235, 25%, 65%, 0.22); /* general normal border color */
+  --border-hover: hsla(
+    235,
+    25%,
+    65%,
+    0.32
+  ); /* border color of panels when hovered */
+  --button-border: hsl(
+    235,
+    25%,
+    100%,
+    0.12
+  ); /* neutral border color of buttons */
+
+  /* base colors */
+  --red-1: hsl(347, 87%, 76%);
+  --red-2: hsl(347, 87%, 71%);
+  --red-3: hsl(347, 87%, 71%);
+  --red-4: hsl(347, 87%, 66%);
+  --red-5: hsl(347, 87%, 61%);
+
+  --green-1: hsl(128, 75%, 75%);
+  --green-2: hsl(128, 75%, 70%);
+  --green-3: hsl(128, 75%, 70%);
+  --green-4: hsl(128, 75%, 65%);
+  --green-5: hsl(128, 75%, 60%);
+
+  --blue-1: hsl(210, 85%, 75%);
+  --blue-2: hsl(210, 85%, 70%);
+  --blue-3: hsl(210, 85%, 70%);
+  --blue-4: hsl(210, 85%, 65%);
+  --blue-5: hsl(210, 85%, 60%);
+
+  --yellow-1: hsl(40, 90%, 82%);
+  --yellow-2: hsl(40, 90%, 77%);
+  --yellow-3: hsl(40, 90%, 77%);
+  --yellow-4: hsl(40, 90%, 72%);
+  --yellow-5: hsl(40, 90%, 67%);
+
+  --purple-1: hsl(260, 80%, 80%);
+  --purple-2: hsl(260, 80%, 75%);
+  --purple-3: hsl(260, 80%, 75%);
+  --purple-4: hsl(260, 80%, 70%);
+  --purple-5: hsl(260, 80%, 65%);
+}
