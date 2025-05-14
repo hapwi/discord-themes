@@ -39,9 +39,14 @@
 
 /* ─── HIDE “Activity — X” GROUP IN THE RIGHT-HAND MEMBERS PANEL ─── */
 /* 1) Hide the "Activity — N" header (the first H3 in the Members list) */
+/* 2) you will need to comment out lines 43-45 to make this work */
+/* 3) you will will then see the settings cog next to the activity list, click it */
+/* 4) click the "Hide Activity Cards" */
+/* 5) you can now uncomment lines 43-45 and it will hide the activity in the members list */
 .content__99f8c > h3.membersGroup_c8ffbb:first-of-type {
   display: none !important;
 }
+/* TODO: follow the steps above to hide the activity in the members list */
 
 /* ─── Hide the nitro button in the chat area along with the unneeded gif and stickers button that take up space for no reason. Stickers and gifs can be accessed with the normal emoji picker. ─── */
 .contents__201d5.button__24af7.button__74017 {
